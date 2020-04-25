@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 const routes: Routes = [
+  {path: 'auth/login', component: AuthComponent },
   {
     path: '',
     component: SidebarComponent,
