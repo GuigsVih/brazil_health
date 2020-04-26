@@ -26,3 +26,15 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "~bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+
+.invalid {
+    border: 2px solid tomato !important;
+}
+.invalid::placeholder {
+    color: tomato !important;
+}
+
+input {
+    border-radius: 5px;
+}

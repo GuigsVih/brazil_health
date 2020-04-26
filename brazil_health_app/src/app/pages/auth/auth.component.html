@@ -11,6 +11,7 @@
       </div>
     </div>
     <ng-template #elseBlock>
+      <form [formGroup]="form">
       <div class="body-login">
         <div class="form-signin">
           <label for="email">E-mail</label>
@@ -26,6 +27,7 @@
           </div>
         </div>
       </div>
+    </form>
     </ng-template>
   </div>
 </ion-content>
