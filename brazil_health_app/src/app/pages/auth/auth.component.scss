@@ -42,10 +42,48 @@ h4 {
     margin-top: 100px;
 }
 
-.col {
+.col-md {
     margin-bottom: 50px;
 }
 
 ion-button {
     width: 50%;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
+  background-clip: border-box;
+  border-radius: .25rem;
+  margin-top: 100px;
+}
+
+.body-login {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: left;
+}
+
+i {
+  font-size: 13px;
+  margin-left: 0.5rem !important;
+  color: #fff;
+}
+
+.lead {
+  font-size: 1.09375rem;
+  font-weight: 300;
+}
+
+label {
+  text-align: left;
+  color: #fff;
+}
+
+.access-margin {
+  margin-top: 20px;
 }

@@ -1,7 +1,8 @@
 {
   "name": "brazil_health_app",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

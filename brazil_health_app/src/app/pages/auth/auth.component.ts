@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
+  role: string;
+
   constructor() { }
 
   ngOnInit() {}
 
+  chooseRole(choosed: string) {
+    this.role = choosed;    
+  }
 }
