@@ -36,6 +36,7 @@ export class AuthComponent implements OnInit {
   }
 
   get f() { return this.form.controls }
+
   onSubmit() {
     this.submitted = true;
     const controls = this.form.controls
@@ -50,7 +51,8 @@ export class AuthComponent implements OnInit {
   prepare(controls) {
     return {
       email: controls['email'].value,
-      password: controls['password'].value
+      password: controls['password'].value,
+      role: this.role
     }
   }
 

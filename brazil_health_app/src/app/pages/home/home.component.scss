@@ -1,0 +1,70 @@
+#container {
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 40%;
+	transform: translateY(-50%);
+}
+
+#container strong {
+	font-size: 20px;
+	line-height: 26px;
+}
+
+#container p {
+	font-size: 16px;
+	line-height: 22px;
+	color: #8c8c8c;
+	margin: 0;
+}
+
+#container a {
+	text-decoration: none;
+}
+
+.row {
+	margin-left: 13%;
+}
+
+.col-6 {
+	height: 120px;
+	background-color: #fff;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	max-width: 40%;
+	cursor: pointer;
+}
+
+i {
+	position: relative;
+	top: 23%;
+	font-size: 45px;
+	color: #06bf68;
+}
+
+p {
+	color: #06bf68 !important;
+	font-weight: bold !important;
+	line-height: 15px !important;
+	position: relative;
+	top: 30px;
+	font-size: 13px !important;
+}
+
+.img-perfil {
+	max-width: 100px;
+	border-radius: 50%;
+	position: relative;
+	top: 20px;
+}
+
+.perfil {
+	color: #fff !important;
+	font-size: 17px !important;
+}
+
+.type-user {
+	letter-spacing: 3px;
+	color: #fff !important;
+}

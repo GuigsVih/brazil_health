@@ -35,7 +35,7 @@ class AuthController extends Controller
     public function login(Request $request): object
     {
         $response = $this->_authRepository->login(
-            $request->only('email', 'password')
+            $request->only('email', 'password', 'role')
         );
         return $response;
     }

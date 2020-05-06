@@ -3,13 +3,18 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
+import { HomeComponent } from './pages/home/home.component';
+import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
 
 const routes: Routes = [
   {path: 'auth/login', component: AuthComponent },
   {
     path: '',
     component: SidebarComponent,
-    pathMatch: 'full',    
+    children: [
+      {path: '', component: HomeComponent },
+      {path: 'pacient', component: PacientDatasComponent},
+    ],
     canActivate: [AuthGuard],
   },
 ];

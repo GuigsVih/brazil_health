@@ -12,22 +12,25 @@
     </div>
     <ng-template #elseBlock>
       <form [formGroup]="form">
-      <div class="body-login">
-        <div class="form-signin">
-          <label for="email">E-mail</label>
-          <i class="far fa-user"></i>
-          <input type="email" id="email" class="form-control" formControlName="email"
-            [ngClass]="{ 'invalid': submitted && f.email.errors }" placeholder="Digite seu e-mail" required autofocus>
-          <label for="password">Senha</label>
-          <i class="fas fa-unlock"></i>
-          <input type="password" id="password" class="form-control" formControlName="password"
-            [ngClass]="{ 'invalid': submitted && f.password.errors }" placeholder="Digite sua senha" required>
-          <div class="text-center">
-            <ion-button (click)="onSubmit()" class="access-margin" color="light">Acessar</ion-button>
+        <div class="body-login">
+          <div class="form-signin">
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+            <label for="email">E-mail</label>
+            <i class="far fa-user"></i>
+            <input type="email" id="email" class="form-control" formControlName="email"
+              [ngClass]="{ 'invalid': submitted && f.email.errors }" placeholder="Digite seu e-mail" required autofocus>
+            <label for="password">Senha</label>
+            <i class="fas fa-unlock"></i>
+            <input type="password" id="password" class="form-control" formControlName="password"
+              [ngClass]="{ 'invalid': submitted && f.password.errors }" placeholder="Digite sua senha" required>
+            <div class="text-center">
+              <ion-button (click)="onSubmit()" class="access-margin" color="light">Acessar</ion-button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
     </ng-template>
   </div>
 </ion-content>

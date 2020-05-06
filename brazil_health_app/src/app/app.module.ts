@@ -19,12 +19,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects/auth.effects';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    AuthComponent
+    AuthComponent,
+    HomeComponent,
+    PacientDatasComponent
   ],
   entryComponents: [],
   imports: [

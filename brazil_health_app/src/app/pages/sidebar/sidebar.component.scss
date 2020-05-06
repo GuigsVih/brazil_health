@@ -1,18 +1,22 @@
 .standard-background {
-    background: linear-gradient(0deg, #9ecd46, #06bf68);
-    background: -webkit-linear-gradient(100deg, #9ecd46, #06bf68);
+    background: linear-gradient(0deg, #9ecd46, #05bf67d6);
+    background: -webkit-linear-gradient(100deg, #9ecd46, #05bf67d6);
 }
 
 .toolbar-background {
-  background-color: #06bf68 !important;
+  background-color: #05bf67d6 !important;
 }
 ion-header {
   position: initial;
 }
 ion-toolbar.new-background {
-    --background: #06bf68;
+    --background: #05bf67d6;
 }
 
 ion-menu-button {
   --color: #fff;
+}
+
+ion-item {
+  cursor: pointer;
 }

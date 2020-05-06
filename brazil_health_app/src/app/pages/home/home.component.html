@@ -1,0 +1,31 @@
+<ng-container *ngIf="user$ | async as _user">
+  <div id="container">
+    <div class="text-center mb-5">
+      <img *ngIf="!_user.photo" src="http://localhost:8000/storage/img/perfil.jpg" class="img-perfil" alt="perfil-image">
+      <p class="perfil">{{ _user.name }}</p>
+      <p *ngIf="_user.role === 'pacient'" class="type-user">Paciente</p>
+    </div>
+    <div class="row">
+      <ng-container *ngIf="_user.role === 'pacient'">
+        <div class="col-6 mr-2" routerLink="pacient"><i class="far fa-address-card"></i>
+          <p>Dados do Paciente</p>
+        </div>
+        <div class="col-6"><i class="fas fa-search"></i>
+          <p class="mt-2">Procurar</p>
+        </div>
+        <!-- <div class="col-6 mr-2"><i class="fas fa-calendar-day"></i>
+        <p class="mt-1">Meus Agendamentos</p>
+        </div>
+        <div class="col-6"><i class="fas fa-clipboard-list"></i>
+          <p class="mt-1">Meus Resultados</p>
+        </div>
+        <div class="col-6 mr-2"><i class="fas fa-briefcase-medical"></i>
+          <p class="mt-2">Planos</p>
+        </div>
+        <div class="col-6"><i class="far fa-credit-card"></i>
+          <p>Pagamentos Antecipados</p>
+        </div> -->
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
