@@ -5,6 +5,7 @@ namespace App\Models;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Model de usuário implementando as configurações do JWT
@@ -21,7 +22,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'lastname', 'role'
     ];
 
     /**
@@ -41,5 +42,18 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    /**
+     * Campo virtual para o retorno da listagem, o atributo voltar
+     * com a url já pronta da foto.
+     *
+     * @return mixed
+     */
+    public function getPhotoAttribute()
+    {
+        if ($this->attributes['photo'] != null) {
+            return Storage::url('img/' . $this->attributes['photo']);
+        }
     }
 }

@@ -21,6 +21,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { HomeComponent } from './pages/home/home.component';
 import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.compo
     SidebarComponent,
     AuthComponent,
     HomeComponent,
-    PacientDatasComponent
+    PacientDatasComponent,
+    RegisterComponent,
   ],
   entryComponents: [],
   imports: [

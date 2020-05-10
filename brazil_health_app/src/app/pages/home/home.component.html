@@ -1,7 +1,11 @@
-<ng-container *ngIf="user$ | async as _user">
+<ng-container *ngIf="user$ | async as _user;else elseBlock">
   <div id="container">
     <div class="text-center mb-5">
-      <img *ngIf="!_user.photo" src="http://localhost:8000/storage/img/perfil.jpg" class="img-perfil" alt="perfil-image">
+      <img *ngIf="!_user.photo; else elseBlock" src="http://localhost:8000/storage/img/perfil.jpg" class="img-perfil"
+        alt="perfil-image">
+      <ng-template #elseBlock>
+        <img [src]="_user.photo" class="img-perfil" alt="perfil-image">
+      </ng-template>
       <p class="perfil">{{ _user.name }}</p>
       <p *ngIf="_user.role === 'pacient'" class="type-user">Paciente</p>
     </div>
@@ -29,3 +33,10 @@
     </div>
   </div>
 </ng-container>
+<ng-template #elseBlock>
+  <div id="container">
+    <div class="spinner-border text-light" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

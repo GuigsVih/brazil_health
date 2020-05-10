@@ -5,9 +5,11 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {path: 'auth/login', component: AuthComponent },
+  {path: 'register/:role', component: RegisterComponent},
   {
     path: '',
     component: SidebarComponent,

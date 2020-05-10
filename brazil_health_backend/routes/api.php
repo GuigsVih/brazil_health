@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\VerifyEmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', 'AuthController@login');
+Route::post('/user/register', 'UserController@register')
+    ->middleware(VerifyEmail::class);
 Route::post('/me', ['uses' => 'AuthController@me']);
 Route::post('/logout', ['uses' => 'AuthController@logout']);

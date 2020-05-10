@@ -17,15 +17,11 @@ export class UserService {
     return this.http.get(`${this.url}/users`, {params: queryParams});
   }
 
-  addUser(user) {
-    return this.http.post(`${this.url}/users`, user);
+  register(user) {
+    return this.http.post(`${this.url}/user/register`, user);
   }
 
-  editUser(user) {
+  edit(user) {
     return this.http.put(`${this.url}/users/${user.id}`, user);
-  }
-
-  deleteUser(id) {
-    return this.http.delete(`${this.url}/users/${id}`);
   }
 }
