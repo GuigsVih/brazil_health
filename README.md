@@ -11,7 +11,7 @@ O backend foi desenvolvido utilizando o framework Laravel 6.
 - Altere as configurações de banco de dados.
 - Rode o comando php artisan jwt:secret
 - Rode o comando php artisan key:generate.
-- Rode o comando ```php artisan migrate --seed````para criar as tabelas no banco e adiconar um usuário.
+- Rode o comando `php artisan migrate --seed`para criar as tabelas no banco e adiconar um usuário.
 - php artisan serve para iniciar o servidor.
 
 # Frontend
