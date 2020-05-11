@@ -23,7 +23,7 @@ O frontend foi desenvolvido utilizando o framework Ionic com Angular.
 - `npm install` para instalar as dependências
 - `ionic serve` para iniciar a aplicação
 - verifique os plugins do cordova para transições de tela
-- ionic cordova run android para executar a criação da APK
+- `ionic cordova run android` para executar a criação da APK
 
 # Required
 
