@@ -2,6 +2,10 @@ import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/co
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Store } from '@ngrx/store';
+import { NativeTransitionOptions, NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
+import { Login } from '../../actions/auth.actions';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +26,10 @@ export class RegisterComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private service: UserService,
-    private fb: FormBuilder
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private store: Store,
+    private nativePageTransitions: NativePageTransitions
     ) { }
 
   ngOnInit() {
@@ -57,7 +64,19 @@ export class RegisterComponent implements OnInit {
     const data = this.prepareRegister(this.form.controls);
     this.service.register(data)
       .subscribe(res => {
-        this.registerLoading = false;
+        this.authService.login(res)
+          .subscribe((res: any) => {
+            this.store.dispatch(new Login({ token: res.token }));
+            let options : NativeTransitionOptions = {
+              direction: 'up',
+              duration: 600
+            };
+            this.nativePageTransitions.flip(options);        
+            location.href = '/';
+            this.registerLoading = false;
+            
+          })
+        
       }, err => {
         this.error = err.error;
         this.registerLoading = false;
@@ -71,8 +90,8 @@ export class RegisterComponent implements OnInit {
       email: controls['email'].value,
       password: controls['password'].value,
       role: controls['role'].value,
-      file: this.photo[0],
-      file_name: this.photoName[0]
+      file: this.photo ? this.photo[0] : null,
+      file_name: this.photoName ? this.photoName[0] : null
 
     }
   }

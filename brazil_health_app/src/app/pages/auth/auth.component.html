@@ -26,7 +26,7 @@
             <input type="password" id="password" class="form-control" formControlName="password"
               [ngClass]="{ 'invalid': submitted && f.password.errors }" placeholder="Digite sua senha" required>
             <div class="text-center mt-1">
-              <a [routerLink]="['/register/' + role]">Cadastre-se</a>
+              <a (click)="register()">Cadastre-se</a>
             </div>
             <div class="text-center">
               <ion-button (click)="onSubmit()" class="access-margin" color="light">Acessar

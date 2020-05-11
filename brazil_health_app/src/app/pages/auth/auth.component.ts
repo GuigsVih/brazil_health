@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Login } from 'src/app/actions/auth.actions';
 import { Store } from '@ngrx/store';
+import { NavController } from '@ionic/angular';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +22,9 @@ export class AuthComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: AuthService,
-    private store: Store) { }
+    private store: Store,
+    private navCtrl: NavController,
+    private nativePageTransitions: NativePageTransitions) { }
 
   ngOnInit() {
     this.createForm();
@@ -56,12 +60,29 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  register() {
+    let options: NativeTransitionOptions = {
+      direction : 'left',
+      duration : 400,
+      slowdownfactor : -1,
+      androiddelay: 50
+    };
+
+    this.nativePageTransitions.slide(options);
+    this.navCtrl.navigateForward(`/register/${this.role}`);
+  }
+
   login(values) {
     this.loading = true;
     this.service.login(values)
       .subscribe((res : any) => {
         this.loading = false
         this.store.dispatch(new Login({ token: res.token }));
+        let options : NativeTransitionOptions = {
+          direction: 'up',
+          duration: 600
+        };
+        this.nativePageTransitions.flip(options);        
         location.href = '/';
       }, err => {
         this.loading = false

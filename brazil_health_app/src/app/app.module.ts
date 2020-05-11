@@ -22,6 +22,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
 import { HomeComponent } from './pages/home/home.component';
 import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { RegisterComponent } from './pages/register/register.component';
     EffectsModule.forRoot([AuthEffects]),
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     StatusBar,
@@ -53,7 +54,8 @@ import { RegisterComponent } from './pages/register/register.component';
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'en' },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    NativePageTransitions
   ],
   bootstrap: [AppComponent]
 })

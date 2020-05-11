@@ -29,5 +29,6 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $this->_repository->register($request->all());
+        return response()->json($request->all(), 201);
     }
 }

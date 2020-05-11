@@ -22,15 +22,17 @@ class UserRepository
      *
      * @param array $data do usuario.
      *
-     * @return void
+     * @return object
      */
-    public function register(array $data): void
+    public function register(array $data): object
     {
         $user = new User();
         $user->fill($data);
         $user->password = bcrypt($data['password']);
         $user->photo = $this->_file->saveImage($data);
         $user->save();
+
+        return $user;
     }
 
 
