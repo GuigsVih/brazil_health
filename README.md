@@ -13,7 +13,7 @@ O backend foi desenvolvido utilizando o framework Laravel 6.
 - Rode o comando `php artisan key:generate`.
 - Rode o comando `php artisan migrate --seed`para criar as tabelas no banco e adiconar um usuário.
 - Rode o comando `php artisan storage:link` para direcionar o `storage` para a pasta `public`
-- php artisan serve para iniciar o servidor.
+- `php artisan serve` para iniciar o servidor.
 
 # Frontend
 
