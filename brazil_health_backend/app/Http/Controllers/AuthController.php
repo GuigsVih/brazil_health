@@ -13,50 +13,50 @@ use Illuminate\Support\Facades\Auth;
  */
 class AuthController extends Controller
 {
-    private $_authRepository;
+   private $_authRepository;
 
-    /**
-     * Instanciação de classes.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->_authRepository = new AuthRepository();
-    }
+   /**
+    * Instanciação de classes.
+    *
+    * @return void
+    */
+   public function __construct()
+   {
+      $this->_authRepository = new AuthRepository();
+   }
 
-    /**
-     * Função para login.
-     *
-     * @param $request dados ao logar
-     *
-     * @return object
-     */
-    public function login(Request $request): object
-    {
-        $response = $this->_authRepository->login(
-            $request->only('email', 'password', 'role')
-        );
-        return $response;
-    }
+   /**
+    * Função para login.
+    *
+    * @param $request dados ao logar
+    *
+    * @return object
+    */
+   public function login(Request $request): object
+   {
+      $response = $this->_authRepository->login(
+         $request->only('email', 'password', 'role')
+      );
+      return $response;
+   }
 
-    /**
-     * Desloga usuário.
-     *
-     * @return void
-     */
-    public function logout(): void
-    {
-        $this->_authRepository->logout();
-    }
+   /**
+    * Desloga usuário.
+    *
+    * @return void
+    */
+   public function logout(): void
+   {
+      $this->_authRepository->logout();
+   }
 
-    /**
-     * Retornar usuário logado.
-     *
-     * @return object
-     */
-    public function me(): object
-    {
-        return response()->json(Auth::user());
-    }
+   /**
+    * Retornar usuário logado.
+    *
+    * @return object
+    */
+   public function me(): object
+   {
+      return response()->json(Auth::user());
+   }
 }
