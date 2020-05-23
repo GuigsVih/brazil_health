@@ -17,6 +17,10 @@ export class AuthService {
   login(values: any) {
     return this.http.post(`${this.url}/login`, values);
   }
+  
+  socialLogin(values: any) {
+    return this.http.post(`${this.url}/social-login`, values);
+  }
 
   logout() {
     return this.http.post(`${this.url}/logout`, environment.httpOptions);

@@ -5,6 +5,7 @@ import { Login } from 'src/app/actions/auth.actions';
 import { Store } from '@ngrx/store';
 import { NavController } from '@ionic/angular';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
+import { AuthService as AuthFacebookService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-auth',
@@ -24,7 +25,8 @@ export class AuthComponent implements OnInit {
     private service: AuthService,
     private store: Store,
     private navCtrl: NavController,
-    private nativePageTransitions: NativePageTransitions) { }
+    private nativePageTransitions: NativePageTransitions,
+    private facebook: AuthFacebookService) { }
 
   ngOnInit() {
     this.createForm();
@@ -92,5 +94,25 @@ export class AuthComponent implements OnInit {
   }
   chooseRole(choosed: string) {
     this.role = choosed;    
+  }
+  async facebookLogin() {    
+    const user = await this.facebook.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.service.socialLogin(user)
+      .subscribe( (res: any) => {
+        console.log(res);        
+          this.store.dispatch(new Login({token: res.token}));
+          let options : NativeTransitionOptions = {
+            direction: 'up',
+            duration: 600
+          };
+          this.nativePageTransitions.flip(options);        
+          // location.href = '/';
+        }, err => {
+          this.loading = false
+          this.error = err.error;
+        }
+      )
+    
+    
   }
 }

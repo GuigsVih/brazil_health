@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', 'AuthController@login');
+Route::post('/social-login', 'AuthController@socialLogin');
 Route::post('/user/register', 'UserController@register')
     ->middleware(VerifyEmail::class);
 Route::post('/me', ['uses' => 'AuthController@me']);

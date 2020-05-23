@@ -23,6 +23,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+
+const config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("566846387561882"),
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -46,16 +58,18 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx
     EffectsModule.forRoot([AuthEffects]),
     BrowserModule,
     IonicModule.forRoot(),
+    SocialLoginModule,
     AppRoutingModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthGuard,
+    NativePageTransitions,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'en' },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    NativePageTransitions
+    { provide: AuthServiceConfig, useFactory: provideConfig }
   ],
   bootstrap: [AppComponent]
 })

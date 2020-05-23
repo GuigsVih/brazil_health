@@ -12,7 +12,7 @@ h5 {
     position: absolute;
     left: 0;
     right: 0;
-    top: 52%;
+    top: 45%;
     transform: translateY(-50%);
 }
 
@@ -41,7 +41,12 @@ ion-button {
 
 .invalid-form {
     width: 100%;
-    margin-top: 0.25rem;
     font-size: 80%;
     color: #dc3545;
+    position: relative;
+    bottom: 10px;
+}
+
+label {
+    color: #6c757d;
 }

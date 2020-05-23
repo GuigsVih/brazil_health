@@ -41,6 +41,19 @@ class AuthController extends Controller
     }
 
     /**
+     * Login social para Facebook.
+     *
+     * @param Request $request dados da req.
+     *
+     * @return object
+     */
+    public function socialLogin(Request $request): object
+    {
+        $response = $this->_authRepository->socialLogin($request->all());
+        return $response;
+    }
+
+    /**
      * Desloga usuário.
      *
      * @return void

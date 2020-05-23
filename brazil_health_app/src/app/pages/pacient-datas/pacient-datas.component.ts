@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { currentUser } from '../../selectors/auth.selectors';
 
 @Component({
   selector: 'app-pacient-datas',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PacientDatasComponent implements OnInit {
 
-  constructor() { }
+  user$: any;
 
-  ngOnInit() {}
+  constructor(
+    private store: Store
+  ) { }
+
+  ngOnInit() {
+    this.loadMyData();
+  }
+
+  async loadMyData() {
+    this.user$ = await this.store.pipe(select(currentUser));
+  }
 
 }

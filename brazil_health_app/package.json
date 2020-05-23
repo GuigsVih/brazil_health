@@ -29,10 +29,12 @@
     "@ngrx/effects": "^9.1.0",
     "@ngrx/router-store": "^9.1.0",
     "@ngrx/store": "^9.1.0",
+    "angularx-social-login": "^2.2.0",
     "bootstrap": "^4.4.1",
     "com.telerik.plugins.nativepagetransitions": "^0.6.5",
     "cordova": "^9.0.0",
     "cordova-android": "8.1.0",
+    "cordova-browser": "6.0.0",
     "core-js": "^2.5.4",
     "fontawesome": "^5.6.3",
     "rxjs": "~6.5.1",
@@ -84,7 +86,8 @@
       "com.telerik.plugins.nativepagetransitions": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }
