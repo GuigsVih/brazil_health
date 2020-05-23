@@ -1,0 +1,47 @@
+h5 {
+    color: #fff;
+}
+
+.bg-standard {
+    --background: linear-gradient(100deg, #9ecd46, #06bf68);
+    --background: -webkit-linear-gradient(100deg, #9ecd46, #06bf68);
+}
+
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 52%;
+    transform: translateY(-50%);
+}
+
+#container strong {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+#container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+}
+
+#container a {
+    text-decoration: none;
+}
+.form-area {
+    margin-top: 32px !important;
+}
+
+ion-button {
+    width: 50%;
+}
+
+.invalid-form {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
