@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\SocialUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\JWTAuth;
 
 /**
  * Repositório de autenticação
@@ -25,15 +26,15 @@ class AuthRepository
         if ($token = Auth::attempt($data)) {
             return response()->json(
                 [
-                    'user'  => Auth::user(),
+                    'user'  => Auth::user()->load('social'),
                     'token' => $token
                 ],
                 200
             );
         }
 
-        return response()->json('Usuário e/ou senha incorretos', 403);
-    }
+      return response()->json('Usuário e/ou senha incorretos', 403);
+   }
 
     /**
      * Login social para Facebook.
@@ -59,12 +60,11 @@ class AuthRepository
                 $user->social_id = $newSocialUser->id;
                 $user->save();
             }
-            if ($token = Auth::attempt(['email' => $user['email'], 'password' => $user['password']])) {
+            if ($token = auth()->login($user)) {
                 return response()->json(
                     [
-                        'user' => Auth::user(),
+                        'user' => Auth::user()->load('social'),
                         'token' => $token,
-                        'social' => count($socialUser) > 0 ? $socialUser : $newSocialUser
                     ]
                 );
             }

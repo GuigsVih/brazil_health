@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
  */
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+   use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,26 +22,32 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'lastname', 'role'
+        'name', 'email', 'lastname', 'role', 'cpf', 'cep',
+        'public_place', 'city', 'state', 'neighborhood', 'number'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+   /**
+    * The attributes that should be hidden for arrays.
+    *
+    * @var array
+    */
+   protected $hidden = [
+      'password', 'remember_token',
+   ];
 
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
+   public function getJWTIdentifier()
+   {
+      return $this->getKey();
+   }
 
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function social()
+    {
+        return $this->belongsTo('App\Models\SocialUser', 'social_id');
     }
 
     /**

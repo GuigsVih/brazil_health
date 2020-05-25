@@ -14,7 +14,7 @@ import { AuthService as AuthFacebookService, FacebookLoginProvider, SocialUser }
 })
 export class AuthComponent implements OnInit {
 
-  role: string;
+  role: string = 'pacient';
   form: FormGroup;
   submitted: boolean;
   loading: boolean;
@@ -92,21 +92,17 @@ export class AuthComponent implements OnInit {
       }
     )
   }
-  chooseRole(choosed: string) {
-    this.role = choosed;    
-  }
   async facebookLogin() {    
     const user = await this.facebook.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.service.socialLogin(user)
-      .subscribe( (res: any) => {
-        console.log(res);        
+      .subscribe( (res: any) => {   
           this.store.dispatch(new Login({token: res.token}));
           let options : NativeTransitionOptions = {
             direction: 'up',
             duration: 600
           };
           this.nativePageTransitions.flip(options);        
-          // location.href = '/';
+          location.href = '/';
         }, err => {
           this.loading = false
           this.error = err.error;

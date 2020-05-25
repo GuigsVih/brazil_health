@@ -31,4 +31,18 @@ class UserController extends Controller
         $this->_repository->register($request->all());
         return response()->json($request->all(), 201);
     }
+
+    /**
+     * Atualiza dados de usuário
+     *
+     * @param Request $request dados da requisicao.
+     * @param int     $id      id do usuario.
+     *
+     * @return void
+     */
+    public function update(Request $request, int $id)
+    {
+        $this->_repository->update($request->all(), $id);
+        return response()->json([], 201);
+    }
 }

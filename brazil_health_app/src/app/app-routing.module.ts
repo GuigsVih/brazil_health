@@ -6,6 +6,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   {path: 'auth/login', component: AuthComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       {path: '', component: HomeComponent },
       {path: 'pacient', component: PacientDatasComponent},
+      {path: 'search', component: SearchComponent},
     ],
     canActivate: [AuthGuard],
   },

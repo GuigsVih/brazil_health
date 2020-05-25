@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangePasswordToUsersTable extends Migration
+class ChangeForeignToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,11 +16,9 @@ class ChangePasswordToUsersTable extends Migration
         Schema::table(
             'users',
             function (Blueprint $table) {
-                $table->string('password')
-                    ->nullable()
+                $table->dropForeign(['social_id']);
+                $table->unsignedInteger('social_id')
                     ->change();
-                $table->unsignedBigInteger('social_id')
-                    ->nullable();
                 $table->foreign('social_id')
                     ->references('id')
                     ->on('social_users');
@@ -35,11 +33,8 @@ class ChangePasswordToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table(
-            'users',
-            function (Blueprint $table) {
-                //
-            }
-        );
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

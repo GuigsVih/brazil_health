@@ -14,8 +14,12 @@ class SaveFileFromBinary
      *
      * @return string
      */
-    public function saveImage($data)
+    public function saveImage($data, $user = null)
     {
+        if ($user) {
+            Storage::disk('public')
+                ->delete('img/' . $user['photo']);
+        }
         if (isset($data['file']) && $data['file'] != '') {
             $content = base64_decode($data['file']);
             $file = fopen('php://temp', 'r+');
@@ -27,8 +31,8 @@ class SaveFileFromBinary
                 )
             ) . '.' . pathinfo($data['file_name'], PATHINFO_EXTENSION);
 
-            Storage::disk('local')
-                ->put('public/img/' . $photo_name, $file);
+            Storage::disk('public')
+                ->put('img/' . $photo_name, $file);
             return $photo_name;
         }
     }

@@ -1,10 +1,12 @@
 <ng-container *ngIf="user$ | async as _user;else elseBlock">
   <div id="container">
     <div class="text-center mb-5">
-      <img *ngIf="!_user.photo; else elseBlock" src="http://localhost:8000/storage/img/perfil.jpg" class="img-perfil"
-        alt="perfil-image">
+      <img *ngIf="_user.photo;else elseBlockFirst" [src]="_user.photo" class="img-perfil" alt="perfil-image">
+      <ng-template #elseBlockFirst>
+        <img *ngIf="_user.social; else elseBlock" [src]="_user.social.photo" class="img-perfil" alt="perfil-image">
+      </ng-template>
       <ng-template #elseBlock>
-        <img [src]="_user.photo" class="img-perfil" alt="perfil-image">
+        <img src="http://localhost:8000/storage/img/perfil.jpg" class="img-perfil" alt="perfil-image">
       </ng-template>
       <p class="perfil">{{ _user.name }}</p>
       <p *ngIf="_user.role === 'pacient'" class="type-user">Paciente</p>
@@ -14,7 +16,7 @@
         <div class="col-6 mr-2" routerLink="pacient"><i class="far fa-address-card"></i>
           <p>Dados do Paciente</p>
         </div>
-        <div class="col-6"><i class="fas fa-search"></i>
+        <div routerLink="search" class="col-6"><i class="fas fa-search"></i>
           <p class="mt-2">Procurar</p>
         </div>
         <!-- <div class="col-6 mr-2"><i class="fas fa-calendar-day"></i>

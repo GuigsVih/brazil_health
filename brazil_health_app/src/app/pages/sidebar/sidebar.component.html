@@ -7,11 +7,15 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item routerLink="pacient">
+        <ion-item routerLink="/">
+          <i class="fas fa-home" slot="start"></i>
+          <ion-label>Home</ion-label>
+        </ion-item>
+        <ion-item routerLink="/pacient">
           <i class="far fa-address-card" slot="start"></i>
           <ion-label>Dados do Paciente</ion-label>
         </ion-item>
-        <ion-item routerLink="search">
+        <ion-item routerLink="/search">
           <i class="fas fa-search" slot="start"></i>
           <ion-label>Procurar</ion-label>
         </ion-item>

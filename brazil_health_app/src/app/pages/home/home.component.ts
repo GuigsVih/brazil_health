@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   user$: any;
 
   ngOnInit() {
-    this.user$ = this.store.pipe(select(currentUser));    
+    this.user$ = this.store.pipe(select(currentUser));      
   }
 
 }

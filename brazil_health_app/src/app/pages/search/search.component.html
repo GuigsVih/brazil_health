@@ -1,0 +1,28 @@
+<ion-searchbar (ionInput)="loadItems($event)" ionFocus animated></ion-searchbar>
+<ion-content padding>
+  <ion-list>
+    <ng-container *ngIf="hasKeys; else elseBlock">
+      <ion-item *ngFor="let company of companies">
+        <ion-avatar slot="start">
+          <img src="http://localhost:8000/storage/img/company-perfil.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ company.nome }}</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let service of services">
+        <ion-avatar slot="start">
+          <img src="http://localhost:8000/storage/img/company-perfil.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ service.nome }}</h2>
+          <h3>{{ service.clinic.nome }}</h3>
+          <p>{{ service.valor | currency:'R$ ':false:'1.2':'br' }}</p>          
+        </ion-label>
+      </ion-item>
+    </ng-container>
+    <ng-template #elseBlock>
+      <p class="none-result">Nenhum resultado encontrado.</p>
+    </ng-template>
+  </ion-list>
+</ion-content>

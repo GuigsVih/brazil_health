@@ -3,6 +3,16 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 40%;
-  transform: translateY(-50%);
+  top: 10%;
+}
+h5 {
+  color: #fff;
+}
+
+.form-area {
+  margin-top: 10px !important;
+}
+.bg-standard {
+    --background: linear-gradient(0deg, #9ecd46, #2dc97f);
+    --background: -webkit-linear-gradient(100deg, #9ecd46, #2dc97f);
 }

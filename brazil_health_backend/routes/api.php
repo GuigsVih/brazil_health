@@ -20,3 +20,14 @@ Route::post('/user/register', 'UserController@register')
     ->middleware(VerifyEmail::class);
 Route::post('/me', ['uses' => 'AuthController@me']);
 Route::post('/logout', ['uses' => 'AuthController@logout']);
+
+Route::group(
+    [
+        'middleware' => 'auth:api'
+    ],
+    function () {
+        Route::post('search', 'SearchController@search');
+        Route::get('companies', 'SearchController@someEnterprises');
+        Route::put('user/{id}', 'UserController@update');
+    }
+);

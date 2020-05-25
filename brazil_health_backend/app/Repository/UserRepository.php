@@ -35,5 +35,26 @@ class UserRepository
         return $user;
     }
 
+    /**
+     * Atualiza dados do usuário.
+     *
+     * @param array $data dados do usuario.
+     * @param int   $id   do usuário.
+     *
+     * @return void
+     */
+    public function update(array $data, int $id): void
+    {
+        $user = User::find($id);
+        $user->fill($data);
+        if ($data['password']) {
+            $user->password = bcrypt($data['password']);
+        }
+        if ($data['file']) {
+            $user->photo = $this->_file->saveImage($data, $user);
+        }
+        $user->save();
+    }
+
 
 }

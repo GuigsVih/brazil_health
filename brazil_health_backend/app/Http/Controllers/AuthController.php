@@ -70,6 +70,6 @@ class AuthController extends Controller
      */
     public function me(): object
     {
-        return response()->json(Auth::user());
+        return response()->json(Auth::user()->load('social'));
     }
 }

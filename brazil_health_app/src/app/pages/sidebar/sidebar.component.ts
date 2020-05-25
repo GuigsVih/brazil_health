@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Store } from '@ngrx/store';
 import { Logout } from '../../actions/auth.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private service: AuthService,
-    private store: Store
+    private store: Store,
     ) { }
 
   ngOnInit() {}

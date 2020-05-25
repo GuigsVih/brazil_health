@@ -24,6 +24,14 @@ import { PacientDatasComponent } from './pages/pacient-datas/pacient-datas.compo
 import { RegisterComponent } from './pages/register/register.component';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { SearchComponent } from './pages/search/search.component';
+import { registerLocaleData } from '@angular/common';
+import localeBr from '@angular/common/locales/pt';
+import localeBrExtra from '@angular/common/locales/extra/pt';
+import { NgxMaskModule } from 'ngx-mask'
+
+
+registerLocaleData(localeBr, 'br', localeBrExtra);
 
 const config = new AuthServiceConfig([
   {
@@ -44,6 +52,7 @@ export function provideConfig() {
     HomeComponent,
     PacientDatasComponent,
     RegisterComponent,
+    SearchComponent
   ],
   entryComponents: [],
   imports: [
@@ -60,6 +69,7 @@ export function provideConfig() {
     IonicModule.forRoot(),
     SocialLoginModule,
     AppRoutingModule,
+    NgxMaskModule.forRoot({})
   ],
   providers: [
     StatusBar,
