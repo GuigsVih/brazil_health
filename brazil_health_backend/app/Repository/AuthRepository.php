@@ -68,6 +68,29 @@ class AuthRepository
                     ]
                 );
             }
+        } else {
+            $user = new User();
+            $user->email = $data['facebook']['email'];
+            $user->password = bcrypt(mt_rand(1, 100000));
+            $user->name = $data['facebook']['first_name'];
+            $user->lastname = $data['facebook']['last_name'];
+            $user->role = 'pacient';
+            $socialUser = new SocialUser();
+            $socialUser->provider = $data['provider'];
+            $socialUser->photo = $data['photoUrl'];
+            $socialUser->provider_id = $data['id'];
+            $socialUser->email = $data['facebook']['email'];
+            $socialUser->save();
+            $user->social_id = $socialUser->id;
+            $user->save();
+            if ($token = auth()->login($user)) {
+                return response()->json(
+                    [
+                        'user' => Auth::user()->load('social'),
+                        'token' => $token,
+                    ]
+                );
+            }
         }
         return response()->json();
     }

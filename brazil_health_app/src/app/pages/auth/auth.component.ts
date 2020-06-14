@@ -19,6 +19,7 @@ export class AuthComponent implements OnInit {
   submitted: boolean;
   loading: boolean;
   error: any;
+  socialLoading: boolean;
   
   constructor(
     private fb: FormBuilder,
@@ -94,8 +95,10 @@ export class AuthComponent implements OnInit {
   }
   async facebookLogin() {    
     const user = await this.facebook.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.socialLoading = true;
     this.service.socialLogin(user)
-      .subscribe( (res: any) => {   
+      .subscribe( (res: any) => {  
+        this.socialLoading = false; 
           this.store.dispatch(new Login({token: res.token}));
           let options : NativeTransitionOptions = {
             direction: 'up',
@@ -104,6 +107,7 @@ export class AuthComponent implements OnInit {
           this.nativePageTransitions.flip(options);        
           location.href = '/';
         }, err => {
+          this.socialLoading = false;
           this.loading = false
           this.error = err.error;
         }

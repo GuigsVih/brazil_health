@@ -21,7 +21,9 @@
                   aria-hidden="true"></span>
               </ion-button>
               <ion-button (click)="facebookLogin()"
-                color="primary">Facebook</ion-button>
+                color="primary">Facebook
+                <span *ngIf="socialLoading" class="loading-button spinner-border spinner-border-sm" role="status"
+                  aria-hidden="true"></span></ion-button>
             </div>
           </div>
         </div>
